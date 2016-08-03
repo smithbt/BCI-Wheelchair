@@ -117,7 +117,7 @@ public class ParameterRequestUI extends JDialog {
 						}
 						
 						// TODO: Add code to define behavior when "OK" button is clicked.
-						// hide contentPanel
+						// hide window, but don't close yet?
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -126,6 +126,11 @@ public class ParameterRequestUI extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

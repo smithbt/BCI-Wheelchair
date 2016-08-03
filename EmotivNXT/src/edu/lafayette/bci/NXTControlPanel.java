@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.io.PrintWriter;
 import java.io.File;
 
+import javax.swing.JOptionPane;
+
 /**
  * This is the main class for the NXTControlPanel.  It reads data
  * from the Emotiv headset on each sampling frame, pushes the data
@@ -462,9 +464,18 @@ public class NXTControlPanel implements EmotivObserver, KeyListener,
 		// Use GUI that has entry fields for the threshold values
 		// to assign values. Check against a NaN error to ensure 
 		// that the thresholds are set, then continue execution.
-		ParameterRequestUI prUI = new ParameterRequestUI();
-		double blink = prUI.getBlinkVal();
-		double occip = prUI.getOccipVal();
+		double blink = new Double (
+			JOptionPane.showInputDialog(null, 
+				"Enter the blink threshold (in uV):", 
+				"Blink Threshold", 
+				JOptionPane.QUESTION_MESSAGE)
+		);
+		double occip = new Double (
+			JOptionPane.showInputDialog(null, 
+				"Enter the occipital threshold (in uV^2):", 
+				"Occiital Threshold", 
+				JOptionPane.QUESTION_MESSAGE)
+		);
 		
 		// Create an object of this class
 		new NXTControlPanel(blink, occip);
