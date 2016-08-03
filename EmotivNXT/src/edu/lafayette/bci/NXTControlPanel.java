@@ -27,11 +27,11 @@ public class NXTControlPanel implements EmotivObserver, KeyListener,
 	// Note: OCCIPITAL_THRES and BLINK_THRES may have to be calibrated each time the headset
 	// is placed on the user's head.  Increasing the threshold will decrease the number of
 	// false positives.  Decreasing the threshold will decrease the number of false negatives.
-	private /*static*/ final double OCCIPITAL_THRES = 30.0; // Power threshold in (uV)^2
+	private /*static*/ final double OCCIPITAL_THRES /*= 30.0*/; // Power threshold in (uV)^2
 	private static final double NXT_SPEED = 0.5; // Constant fraction of the nxt maximum velocity
 	private static final double GYROX_POS_THRES = 2000.0; // Position threshold
 	private static final double GYROX_POS_MAX = 10000.0; // Max value for normalizing gyro position
-	private /*static*/ final double BLINK_THRES = 130.0; // Blink detection threshold, in uV
+	private /*static*/ final double BLINK_THRES /*= 130.0*/; // Blink detection threshold, in uV
 	private static final int BLINK_NUM_THRES = 5; // Number of blinks to trigger a detection
 	private static final double BLINK_TIME_THRES = 2.0; // Time within which blinks must occur (in secs)
 	private static final long CONNECTION_TIMEOUT = 1000; // Timeout for detecting connection loss
@@ -86,7 +86,11 @@ public class NXTControlPanel implements EmotivObserver, KeyListener,
 	/**
 	 * NXTControlPanel constructor, initiates communication with end devices.
 	 */
-	public NXTControlPanel() {
+	public NXTControlPanel(double blink, double occip) {
+		
+		// initialize thresholds
+		BLINK_THRES = blink;
+		OCCIPITAL_THRES = occip;
 		
 		// Create UI
 		ui = new NXTControlPanelUI();
@@ -463,7 +467,7 @@ public class NXTControlPanel implements EmotivObserver, KeyListener,
 		double occip = prUI.getOccipVal();
 		
 		// Create an object of this class
-		new NXTControlPanel();
+		new NXTControlPanel(blink, occip);
 
 	}
 	
