@@ -460,26 +460,28 @@ public class NXTControlPanel implements EmotivObserver, KeyListener,
 	}
 
 	public static void main(String[] args) {
-		// TODO Request values for Occipital and Blink thresholds
-		// Use GUI that has entry fields for the threshold values
-		// to assign values. Check against a NaN error to ensure 
-		// that the thresholds are set, then continue execution.
-		double blink = new Double (
-			JOptionPane.showInputDialog(null, 
-				"Enter the blink threshold (in uV):", 
-				"Blink Threshold", 
-				JOptionPane.QUESTION_MESSAGE)
-		);
-		double occip = new Double (
-			JOptionPane.showInputDialog(null, 
-				"Enter the occipital threshold (in uV^2):", 
-				"Occiital Threshold", 
-				JOptionPane.QUESTION_MESSAGE)
-		);
+		// Request values for Occipital and Blink thresholds
+		String blinkString = JOptionPane.showInputDialog(
+				null, "Enter the blink threshold (in uV):", 
+				"Blink Threshold", JOptionPane.QUESTION_MESSAGE);
+		String occipString = JOptionPane.showInputDialog(
+				null, "Enter the occipital threshold (in uV^2):", 
+				"Occiital Threshold", JOptionPane.QUESTION_MESSAGE);
 		
-		// Create an object of this class
-		new NXTControlPanel(blink, occip);
-
+		try {
+			// parse values returned from requests into doubles
+			double blink = new Double(blinkString);
+			double occip = new Double(occipString);
+			
+			// Create an object of this class with those threshold parameters
+			new NXTControlPanel(blink, occip);
+		} catch (NumberFormatException nfe) {
+			// Display an error if the value entered cannot be parsed to a number.
+			JOptionPane.showMessageDialog(
+					null, "Could not parse a number from the input.\nCannot Continue.", 
+					"Parsing Error", JOptionPane.ERROR_MESSAGE);
+		}
+		
 	}
 	
 	/* ********** Unimplemented Methods ********** */
