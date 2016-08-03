@@ -458,6 +458,9 @@ public class NXTControlPanel implements EmotivObserver, KeyListener,
 		// Use GUI that has entry fields for the threshold values
 		// to assign values. Check against a NaN error to ensure 
 		// that the thresholds are set, then continue execution.
+		ParameterRequestUI prUI = new ParameterRequestUI();
+		double blink = prUI.getBlinkVal();
+		double occip = prUI.getOccipVal();
 		
 		// Create an object of this class
 		new NXTControlPanel();
