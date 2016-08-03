@@ -132,11 +132,17 @@ public class ParameterRequestUI extends JDialog {
 		}
 	}
 	
-	public double getBlinkVal() {
+	public double getBlinkVal() throws IllegalArgumentException {
+		if (blinkVal == Double.NaN) {
+			throw new IllegalArgumentException("No value was entered. Cannot continue.");
+		}
 		return blinkVal;
 	}
 	
-	public double getOccipVal() {
+	public double getOccipVal() throws IllegalArgumentException {
+		if (occipVal == Double.NaN) {
+			throw new IllegalArgumentException("No value was entered. Cannot continue.");
+		}
 		return occipVal;
 	}
 
