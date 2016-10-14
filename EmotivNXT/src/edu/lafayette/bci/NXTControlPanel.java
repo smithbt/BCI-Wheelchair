@@ -31,7 +31,7 @@ public class NXTControlPanel implements EmotivObserver, KeyListener,
 	// false positives.  Decreasing the threshold will decrease the number of false negatives.
 	private /*static*/ final double OCCIPITAL_THRES /*= 30.0*/; // Power threshold in (uV)^2
 	private static final double NXT_SPEED = 0.5; // Constant fraction of the nxt maximum velocity
-	private static final double GYROX_POS_THRES = 2000.0; // Position threshold
+	private static final double GYROX_POS_THRES = 4000.0; // Position threshold
 	private static final double GYROX_POS_MAX = 10000.0; // Max value for normalizing gyro position
 	private /*static*/ final double BLINK_THRES /*= 130.0*/; // Blink detection threshold, in uV
 	private static final int BLINK_NUM_THRES = 5; // Number of blinks to trigger a detection
