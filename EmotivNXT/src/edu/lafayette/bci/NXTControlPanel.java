@@ -81,8 +81,8 @@ public class NXTControlPanel implements EmotivObserver, KeyListener,
 	private static final boolean ENABLE_BLINK = true;
 	private static final boolean ENABLE_GYRO = true;
 	
-	// An array to hold the speed values generated from the gyroscope
-	private ArrayList<Double> allSpeeds = new ArrayList<Double>();
+	// An array to hold the position values generated from the gyroscope
+	private ArrayList<Double> allPositions = new ArrayList<Double>();
 	
 	
 	/**
@@ -209,17 +209,17 @@ public class NXTControlPanel implements EmotivObserver, KeyListener,
 			try { Thread.sleep(250); } catch (Exception e) {}
 		}
 		
-		// Write speeds out to a file
-		PrintWriter speedsOut = null;
+		// Write positions out to a file
+		PrintWriter positionsOut = null;
 		try {
 			// writes to a specific location on my (B. T. Smith) personal computer.
-			speedsOut = new PrintWriter(
-					new File("C:\\Users\\Brandon T. Smith\\Documents\\EXCEL\\gyroSpeeds.csv"));
-			for(Double d : allSpeeds) { speedsOut.println(d); }
+			positionsOut = new PrintWriter(
+					new File("C:\\Users\\Brandon T. Smith\\Documents\\EXCEL\\gyroPositions.csv"));
+			for(Double d : allPositions) { positionsOut.println(d); }
 		} catch (Exception e){
 			e.printStackTrace();
 		} finally {
-			if (speedsOut!=null) { speedsOut.close(); }
+			if (positionsOut!=null) { positionsOut.close(); }
 		}
 
 		// Close device communications
@@ -428,19 +428,17 @@ public class NXTControlPanel implements EmotivObserver, KeyListener,
 		Point[] gyroXData = new Point[gyroX.getData().size()];
 		gyroX.getData().toArray(gyroXData);
 		
-		// Determine speed and direction of rotation
-		// TODO: Consider whether to change the values against which speed is compared in 
-		// 		the if-else statement below
-		double speed = gyroXData[gyroXData.length - 1].getY();
-		if (speed < 0) {
-			nxt.turnLeft(speed * -1 / GYROX_POS_MAX);
+		// Determine direction of rotation
+		double position = gyroXData[gyroXData.length - 1].getY();
+		if (position < 0) {
+			nxt.turnLeft(NXT_SPEED);
 			ui.setDirection(NXTControlPanelUI.LEFT);
 			isTurning = true;
-		} else if (speed != 0) {
-			nxt.turnRight(speed / GYROX_POS_MAX);
+		} else if (position != 0) {
+			nxt.turnRight(NXT_SPEED);
 			ui.setDirection(NXTControlPanelUI.RIGHT);
 			isTurning = true;
-		} else if (isTurning && speed==0) {
+		} else if (isTurning && position==0) {
 			if (moving && forward) {
 				nxt.forward(NXT_SPEED);
 				ui.setDirection(NXTControlPanelUI.FORWARD);
@@ -453,14 +451,16 @@ public class NXTControlPanel implements EmotivObserver, KeyListener,
 			}
 			isTurning = false;
 			// TODO: Consider recalibrating the gyroscope here, so that it resets every time.
+			GyroDetect det = (GyroDetect)gyroX.getPipeline().getAlgorithm(0);
+			det.calibrateCenter();
 		}
-		// Record speed values in an array to output to a file
-		allSpeeds.add( new Double(speed) );
+		// Record position values in an array to output to a file
+		allPositions.add( new Double(position) );
 
 	}
 
 	public static void main(String[] args) {
-		// Request values for Occipital and Blink thresholds
+		// Request values for Blink and Occipital thresholds
 		String blinkString = JOptionPane.showInputDialog(
 				null, "Enter the blink threshold (in uV):", 
 				"Blink Threshold", JOptionPane.QUESTION_MESSAGE);
