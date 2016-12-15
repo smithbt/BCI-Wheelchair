@@ -18,6 +18,8 @@ public class NXTControl {
 	// Also defines a DifferenialPilot object to control the robot. 
 	private static final float WHEEL_DIAMETER=37f;
 	private static final float TRACK_WIDTH=129f;
+	private static final double LINEAR_SPEED = 100; // mm per second
+	private static final double TURN_SPEED = 50; // mm per second
 	private DifferentialPilot robot = null;
 
 	/**
@@ -33,7 +35,8 @@ public class NXTControl {
 	 * @param speed The percentage value of the maximum speed at which the robot should travel.
 	 */
 	public void forward(double speed) {
-		robot.setTravelSpeed(limiter(speed, 0, 1) * robot.getMaxTravelSpeed());
+//		robot.setTravelSpeed(limiter(speed, 0, 1) * robot.getMaxTravelSpeed());
+		robot.setTravelSpeed(LINEAR_SPEED);
 		robot.forward();
 	}
 	
@@ -43,7 +46,8 @@ public class NXTControl {
 	 * @param speed The percentage value of the maximum speed at which the robot should travel.
 	 */
 	public void backward(double speed) {
-		robot.setTravelSpeed(limiter(speed, 0, 1) * robot.getMaxTravelSpeed());
+//		robot.setTravelSpeed(limiter(speed, 0, 1) * robot.getMaxTravelSpeed());
+		robot.setTravelSpeed(LINEAR_SPEED);
 		robot.backward();
 	}
 	
@@ -53,7 +57,8 @@ public class NXTControl {
 	 * @param speed The percentage value of the maximum speed at which the robot should turn.
 	 */
 	public void turnLeft(double speed) {
-		robot.setRotateSpeed(limiter(speed, 0, 1) * robot.getMaxRotateSpeed());
+//		robot.setRotateSpeed(limiter(speed, 0, 1) * robot.getMaxRotateSpeed());
+		robot.setRotateSpeed(TURN_SPEED);
 		robot.rotateLeft();
 	}
 
@@ -63,7 +68,8 @@ public class NXTControl {
 	 * @param speed The percentage value of the maximum speed at which the robot should turn.
 	 */
 	public void turnRight(double speed) {
-		robot.setRotateSpeed(limiter(speed, 0, 1) * robot.getMaxRotateSpeed());
+//		robot.setRotateSpeed(limiter(speed, 0, 1) * robot.getMaxRotateSpeed());
+		robot.setRotateSpeed(TURN_SPEED);
 		robot.rotateRight();
 	}
 	
