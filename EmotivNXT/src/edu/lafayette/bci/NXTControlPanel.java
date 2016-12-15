@@ -461,12 +461,15 @@ public class NXTControlPanel implements EmotivObserver, KeyListener,
 
 	public static void main(String[] args) {
 		// Request values for Blink and Occipital thresholds
+		// If either is cancelled, exit program
 		String blinkString = JOptionPane.showInputDialog(
 				null, "Enter the blink threshold (in uV):", 
 				"Blink Threshold", JOptionPane.QUESTION_MESSAGE);
+		if (blinkString == null) { System.exit(0); }
 		String occipString = JOptionPane.showInputDialog(
 				null, "Enter the occipital threshold (in uV^2):", 
 				"Occiital Threshold", JOptionPane.QUESTION_MESSAGE);
+		if (occipString == null) { System.exit(0); }
 		
 		try {
 			// parse values returned from requests into doubles
