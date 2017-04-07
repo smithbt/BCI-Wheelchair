@@ -3,10 +3,10 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.lejos.nxt.ldt.LEJOS_LIBRARY_CONTAINER/pc"/>
-	<classpathentry kind="lib" path="C:/Java/jdk1.8.0_45_x86/jre/lib/ext/jna.jar" sourcepath="C:/Program Files (x86)/Emotiv Research Edition SDK v2.0.0.20"/>
-	<classpathentry kind="lib" path="C:/Java/jdk1.8.0_45_x86/jre/lib/ext/BCILib.jar"/>
-	<classpathentry kind="lib" path="C:/leJOS NXJ/lib/pc/pccomm.jar"/>
-	<classpathentry kind="lib" path="C:/leJOS NXJ/lib/pc/3rdparty/bluecove.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Brandon T. Smith/OneDrive/Documents/LafayetteCollege/LC_SeniorYear/BCI-Wheelchair_Thesis/java-simple-serial-connector-2.8.0/jssc-2.8.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Java/jdk1.8.0_45_x86/jre/lib/ext/jna.jar" sourcepath="C:/Program Files (x86)/Emotiv Research Edition SDK v2.0.0.20"/>
+	<classpathentry exported="true" kind="lib" path="C:/Java/jdk1.8.0_45_x86/jre/lib/ext/BCILib.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/leJOS NXJ/lib/pc/pccomm.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/leJOS NXJ/lib/pc/3rdparty/bluecove.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Brandon T. Smith/OneDrive/Documents/LafayetteCollege/LC_SeniorYear/BCI-Wheelchair_Thesis/java-simple-serial-connector-2.8.0/jssc-2.8.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
