@@ -7,6 +7,6 @@
 	<classpathentry exported="true" kind="lib" path="C:/Java/jdk1.8.0_45_x86/jre/lib/ext/BCILib.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/leJOS NXJ/lib/pc/pccomm.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/leJOS NXJ/lib/pc/3rdparty/bluecove.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Brandon T. Smith/OneDrive/Documents/LafayetteCollege/LC_SeniorYear/BCI-Wheelchair_Thesis/java-simple-serial-connector-2.8.0/jssc-2.8.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Brandon T. Smith/OneDrive/Documents/LafayetteCollege/LC_SeniorYear/BCI-Wheelchair_Thesis/JSSC/jSSC-2.7.0-Release/jssc.jar" sourcepath="C:/Users/Brandon T. Smith/OneDrive/Documents/LafayetteCollege/LC_SeniorYear/BCI-Wheelchair_Thesis/JSSC/jSSC-2.7.0-Release/src/jssc-2.7.0-src.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
